@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Google Sheets API</title>
+</head>
+<body>
+    <h1>Testing Google Sheets API</h1>
+    <div id="result"></div>
+    
+    <script>
+        const API_KEY = 'AIzaSyBbA4vEQ6kzdd6iXBd6xLO4oPP00bmj5Ck';
+        const SPREADSHEET_ID = '1yzB5awmsJxE9Ug4mwl8Jl90VvOR2IgsEnepl0LJrc_8';
+        const BASE_URL = "https://sheets.googleapis.com/v4/spreadsheets";
+        
+        async function testAPI() {
+            try {
+                const url = `${BASE_URL}/${SPREADSHEET_ID}/values/Attendance!A1:AS60?key=${API_KEY}`;
+                console.log('Fetching:', url);
+                const res = await fetch(url);
+                console.log('Response status:', res.status);
+                const data = await res.json();
+                console.log('Data:', data);
+                document.getElementById('result').innerHTML = `
+                    <h2>Success!</h2>
+                    <p>Status: ${res.status}</p>
+                    <p>Data rows: ${data.values ? data.values.length : 0}</p>
+                    <pre>${JSON.stringify(data, null, 2)}</pre>
+                `;
+            } catch (error) {
+                console.error('Error:', error);
+                document.getElementById('result').innerHTML = `
+                    <h2>Error!</h2>
+                    <p>${error.message}</p>
+                `;
+            }
+        }
+        
+        testAPI();
+    </script>
+</body>
+</html>
