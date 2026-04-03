@@ -24,3 +24,9 @@ expertMode = true
 [postMerge]
 path = "scripts/post-merge.sh"
 timeoutMs = 20000
+
+[userenv]
+
+[userenv.shared]
+VITE_SPREADSHEET_ID = "1yzB5awmsJxE9Ug4mwl8Jl90VvOR2IgsEnepl0LJrc_8"
+VITE_GOOGLE_SHEETS_API_KEY = "AIzaSyBbA4vEQ6kzdd6iXBd6xLO4oPP00bmj5Ck"
